@@ -110,7 +110,7 @@ class ViewCard2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('=============');
+    // print('=============');
     print(listType[0].image);
     return FutureBuilder(
         future: getAllMovies(ApiEndPoints.allMovies),
