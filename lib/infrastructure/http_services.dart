@@ -32,3 +32,15 @@ Future<List> getUpComing(String listType) async {
     throw "Can't get list";
   }
 }
+Future<List> getAllMovies(String listType) async {
+  http.Response res = await http.get(Uri.parse(listType));
+  // print('=====res======${res.body }================');
+  if (res.statusCode == 200) {
+    final decoded = jsonDecode(res.body);
+    List<dynamic> list =
+        decoded['results'].map((item) => AllMovies.fromJson(item)).toList();
+    return list;
+  } else {
+    throw "Can't get list";
+  }
+}

@@ -119,7 +119,7 @@ class CustomButtonWidget extends StatelessWidget {
    CustomButtonWidget({
     Key? key,
     required this.icon,
-    required this.title, this.iconSize= 25, this.textSize=25,
+    required this.title, this.iconSize= 25, this.textSize=12,
   }) : super(key: key);
 
   @override

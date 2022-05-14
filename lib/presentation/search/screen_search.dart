@@ -4,9 +4,20 @@ import 'package:netflix_ui/core/constants.dart';
 import 'package:netflix_ui/presentation/search/widgets/search_idle.dart';
 import 'package:netflix_ui/presentation/search/widgets/search_results.dart';
 
-class ScreenSearch extends StatelessWidget {
+class ScreenSearch extends StatefulWidget {
   const ScreenSearch({Key? key}) : super(key: key);
 
+  @override
+  State<ScreenSearch> createState() => _ScreenSearchState();
+}
+
+class _ScreenSearchState extends State<ScreenSearch> {
+  List<String> suggestions = [
+    'mov1'
+        'mov2'
+  ];
+  bool value = false;
+  String term='';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,6 +27,18 @@ class ScreenSearch extends StatelessWidget {
       child: Column(
         children: [
           CupertinoSearchTextField(
+            onTap: () {
+              value = true;
+              setState(() {});
+              // Navigator.of(context).push(MaterialPageRoute(
+              //     builder: (context) => SearchResultWidget()));
+            },
+            onChanged: (val) {
+              term = val;
+              setState(() {
+                
+              });
+            },
             backgroundColor: Colors.grey.withOpacity(0.4),
             prefixIcon: const Icon(
               CupertinoIcons.search,
@@ -29,10 +52,7 @@ class ScreenSearch extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          Expanded(child:
-          // SearchIdleWidget()
-          SearchResultWidget()
-          ),
+          Expanded(child: value ? SearchResultWidget(search: term,) : SearchIdleWidget()),
         ],
       ),
     )));

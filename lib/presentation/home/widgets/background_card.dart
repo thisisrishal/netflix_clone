@@ -23,12 +23,10 @@ class BackgroundCardWidget extends StatelessWidget {
                 Container(
                   width: double.infinity,
                   height: 500,
-                  decoration:  BoxDecoration(
+                  decoration: BoxDecoration(
                       image: DecorationImage(
-                    image: NetworkImage(
-
-                      '${ApiEndPoints.imageId + trending[1].image}'
-                    ),
+                    image:
+                        NetworkImage(ApiEndPoints.imageId + trending[1].image),
                     fit: BoxFit.cover,
                   )),
                 ),
@@ -48,8 +46,11 @@ class BackgroundCardWidget extends StatelessWidget {
                             title: 'My List',
                           ),
                         ),
-                        _playButton(),
-                        CustomButtonWidget(icon: Icons.info, title: 'Info')
+                        const _playButton(),
+                        CustomButtonWidget(
+                          icon: Icons.info_outline,
+                          title: 'Info',
+                        )
                       ],
                     ))
               ],
@@ -57,7 +58,6 @@ class BackgroundCardWidget extends StatelessWidget {
           } else {
             return Container();
           }
-          ;
         });
   }
 }
@@ -69,22 +69,38 @@ class _playButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton.icon(
-        style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(kwhiteColor)),
-        onPressed: () {},
-        icon: const Icon(
-          Icons.play_arrow,
-          color: kBlackColor,
-        ),
-        label: const Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 10,
+    return Container(
+      color: Colors.white,
+      height: 30,
+      width: 80,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: const [
+          Icon(
+            Icons.play_arrow,
+            color: kBlackColor,
           ),
-          child: Text(
+          Text(
             'Play',
-            style: TextStyle(color: kBlackColor, fontSize: 20),
+            style: TextStyle(
+                color: kBlackColor, fontSize: 12, fontWeight: FontWeight.bold),
           ),
-        ));
+        ],
+      ),
+
+      // child: TextButton.icon(
+      //   style: ButtonStyle(
+      //       // backgroundColor: MaterialStateProperty.all(kwhiteColor)
+      //       ),
+      //   onPressed: () {},
+      // icon: const Icon(
+      //   Icons.play_arrow,
+      //   color: kBlackColor,
+      // ),
+      //   label: const Text(
+      //     'Play',
+      //     style: TextStyle(color: kBlackColor, fontSize: 12,fontWeight: FontWeight.bold),
+      //   ),),
+    );
   }
 }
